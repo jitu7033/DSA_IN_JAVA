@@ -96,7 +96,7 @@ public class arraysOxford {
         }
         int target = sc.nextInt();
 //        PrintArray(arr);
-//        bubbleSort(arr);
+//        src.sorting.bubbleSort(arr);
 //        selectionSort(arr);
         insertionSort(arr);
 //        reverse(arr);

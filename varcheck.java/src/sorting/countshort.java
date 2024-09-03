@@ -1,3 +1,5 @@
+package src.sorting;
+
 public class countshort {
 
     static void printArray(int arr[]){

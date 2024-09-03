@@ -1,3 +1,5 @@
+package src.sorting;
+
 public class selectioSorting {
     static void selectionSort(int[]arr){
         int n = arr.length;

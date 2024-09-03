@@ -1,3 +1,5 @@
+package src.sorting;
+
 public class bubbleSort {
 
     static void bubbleSort(int arr[]){

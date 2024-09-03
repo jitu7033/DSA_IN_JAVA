@@ -4,20 +4,15 @@
 
 
                                                  Jay Shri Ram
-
  */
-//import com.sun.security.jgss.GSSUtil;
-//import com.sun.source.tree.Tree;
 
-//import javax.naming.InsufficientResourcesException;
-//import java.awt.dnd.DragSourceContext;
 import java.beans.Introspector;
 import java.io.*;
 import java.math.BigInteger;
-//import java.sql.SQLIntegrityConstraintViolationException;
-//import java.sql.SQLOutput;
+
 import java.util.*;
-public class test{
+
+public class test {
     static String ab, b;
 
     static class Node {
@@ -33,156 +28,17 @@ public class test{
         }
     }
 
-    // here is my solution   -------------  JGM  --------------------
+    // here is my solution ------------- JGM --------------------
 
     public static void main(String[] args) throws IOException {
         BufferedReader bReader = new BufferedReader(new InputStreamReader(System.in));
         FastReader fs = new FastReader();
-         int T = fs.nextInt();
-         while (T-- > 0) {
-//        int  n = fs.nextInt();
-        long  max = (long) (1e18);
-        int  sum = fs.nextInt();
-        long arr[] = new long[(int) 5];
-        arr = new long[]{1, 3, 6, 10, 15};
-        long dp[] = new long[sum+1];
-        for(int i=0; i<=sum; i++){
-            dp[i] = max;
-        }
-        dp[0] = 0;
-        for(int i=1; i<=5; i++){
-            for(int j=0; j<=sum; j++){
-                if(j-arr[i-1]>=0){
-                    dp[j] = Integer.min((int) dp[j], (int) (dp[(int) (j-arr[i-1])]+1));
-                }
-            }
-        }
-//             for(int i=0; i<=sum; i++){
-//                 System.out.print(dp[i]+" ");
-//             }
-        System.out.println();
-        if(dp[sum]>=max){
-            System.out.println(-1);
-        }
-        else System.out.println(dp[sum]);
+        int T = fs.nextInt();
+        while (T-- > 0) {
 
+        }
     }
-         }
-    public static long unboundedMaximumCountSubsetSum(long arr[], long sum){
-        long n = arr.length;
-        long dp[][] = new long[(int)n+1][(int)sum+1];
-        for(int i=0; i<=n; i++){
-            for(int j=0; j<=sum; j++){
-                if(i==0)dp[i][j] = 0;
-                if(j==0)dp[i][j] = 1;
-            }
-        }
-        for(int i=1; i<=n; i++){
-            for(int j=1; j<=sum; j++){
-                if(arr[i-1]<=j){
-                    dp[i][j] = dp[i][(int) (j-arr[i-1])]+dp[i-1][j];
-                }
-                else{
-                    dp[i][j] = dp[i-1][j];
-                }
-            }
-        }
-        return dp[(int)n][(int)sum];
 
-    }
-    public static boolean unboundedIsSubsetSum(long arr[], long sum){
-        long n = arr.length;
-        boolean dp[][] = new boolean[(int) (n+1)][(int) (sum+1)];
-        for(int i=0; i<=n; i++){
-            for(int j=0; j<=sum; j++){
-                if(i==0)dp[i][j] = false;
-                if(j==0)dp[i][j] = true;
-            }
-        }
-        for(int i=1; i<=n; i++){
-            for(int j=1; j<=sum; j++){
-                if(arr[i-1]<=j){
-                    dp[i][j] = dp[i][(int) (j-arr[i-1])]||dp[i-1][j];
-                }
-                else{
-                    dp[i][j] = dp[i-1][j];
-                }
-            }
-        }
-//         for(int i=0; i<=n; i++){
-//             for(int j=0; j<=sum; j++){
-//                 System.out.print(dp[i][j]+" ");
-//             }
-//             System.out.println();
-//         }
-        return dp[(int)n][(int)sum];
-    }
-    public static long zeroOneMaximumSubsetSum(long arr[], long sum){
-        long n = arr.length;
-        long dp[][] = new long[(int)n+1][(int)sum+1];
-        for(int i=0; i<=n; i++){
-            for(int j=0; j<=sum; j++){
-                if(i==0)dp[i][j] = 0;
-                if(j==0)dp[i][j] = 1;
-            }
-        }
-        for(int i=1; i<=n; i++){
-            for(int j=1; j<=sum; j++){
-                if(arr[i-1]<=j){
-                    dp[i][j] = dp[i-1][(int) (j-arr[i-1])]+dp[i-1][j];
-                }
-                else{
-                    dp[i][j] = dp[i-1][j];
-                }
-            }
-        }
-        return dp[(int)n][(int)sum];
-    }
-    public static boolean zeroOneIsSubsetSum(long arr[], long sum){
-        long n = arr.length;
-        boolean dp[][] = new boolean[(int) (n+1)][(int) (sum+1)];
-        for(int i=0; i<=n; i++){
-            for(int j=0; j<=sum; j++){
-                if(i==0)dp[i][j] = false;
-                if(j==0)dp[i][j] = true;
-            }
-        }
-        for(int i=1; i<=n; i++){
-            for(int j=1; j<=sum; j++){
-                if(arr[i-1]<=j){
-                    dp[i][j] = dp[i-1][(int) (j-arr[i-1])]||dp[i-1][j];
-                }
-                else{
-                    dp[i][j] = dp[i-1][j];
-                }
-            }
-        }
-        return dp[(int)n][(int)sum];
-    }
-    private static void priorityQueue(){
-        PriorityQueue<Integer>pq = new PriorityQueue<>();
-        pq.add(-10);
-        pq.add(-3);
-        pq.add(-12);
-        pq.add(-14);
-        pq.add(-14);
-        pq.add(-1);
-        System.out.println(pq);
-        for(int x:pq){
-            System.out.print(x+" ");
-        }
-        System.out.println();
-        System.out.println(pq.peek());
-        pq.remove(pq.peek());
-        System.out.println(pq.peek());
-        pq.remove(pq.peek());
-        System.out.println(pq.peek());
-        pq.remove(pq.peek());
-        System.out.println(pq.peek());
-        for(int x:pq){
-            System.out.print(x+" ");
-        }
-    }
     static class Pair<U, V> implements Comparable<Pair<U, V>> {
         public U x;
         public V y;
@@ -194,13 +50,16 @@ public class test{
 
         public int compareTo(Pair<U, V> o) {
             int value = ((Comparable<U>) x).compareTo(o.x);
-            if (value != 0) return value;
+            if (value != 0)
+                return value;
             return ((Comparable<V>) y).compareTo(o.y);
         }
 
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+            if (this == o)
+                return true;
+            if (o == null || getClass() != o.getClass())
+                return false;
             Pair<?, ?> pair = (Pair<?, ?>) o;
             return x.equals(pair.x) && y.equals(pair.y);
         }
@@ -211,14 +70,12 @@ public class test{
 
     }
 
-
     static class FastReader {
         BufferedReader br;
         StringTokenizer st;
 
         public FastReader() {
-            br = new BufferedReader(new
-                    InputStreamReader(System.in));
+            br = new BufferedReader(new InputStreamReader(System.in));
         }
 
         String next() {
@@ -278,6 +135,7 @@ public class test{
         // a is greater
         return gcd(b, a % b);
     }
+
     static long gcd(long a, long b) {
         // Everything divides 0
 
@@ -295,17 +153,20 @@ public class test{
                 c = i;
         return c;
     }
+
     static long lcm(long a, long b) {
         long lcm = (a * b) / iGCD(a, b);
         return lcm;
     }
+
     static int maxHeight(char[][] ch, int i, int j, String[] arr) {
         int h = 1;
         if (i == ch.length - 1 || j == 0 || j == ch[0].length - 1)
             return 1;
-        while (i + h < ch.length && j - h >= 0 && j + h < ch[0].length && ch[i + h][j - h] == '*' && ch[i + h][j + h] == '*') {
+        while (i + h < ch.length && j - h >= 0 && j + h < ch[0].length && ch[i + h][j - h] == '*'
+                && ch[i + h][j + h] == '*') {
             String whole = arr[i + h];
-            //System.out.println(whole.substring(j-h,j+h+1));
+            // System.out.println(whole.substring(j-h,j+h+1));
             if (whole.substring(j - h, j + h + 1).replace("*", "").length() > 0)
                 return h;
             h++;
@@ -352,7 +213,7 @@ public class test{
     static Node buildTree(int i, int j, int[] arr) {
         if (i == j) {
 
-            //System.out.print(arr[i]);
+            // System.out.print(arr[i]);
             return new Node(arr[i]);
         }
         int max = i;
@@ -361,7 +222,7 @@ public class test{
                 max = k;
         }
         Node root = new Node(arr[max]);
-        //System.out.print(arr[max]);
+        // System.out.print(arr[max]);
         if (max > i)
             root.left = buildTree(i, max - 1, arr);
         else {
@@ -529,18 +390,18 @@ public class test{
     }
 
     static int calculatePower(PriorityQueue<Integer>[] list, int[] alive) {
-        //    	List<Integer> dead=new ArrayList<>();
+        // List<Integer> dead=new ArrayList<>();
         for (int i = 1; i < alive.length; i++) {
             if (alive[i] == 1) {
                 if (list[i].size() == 0) {
                     continue;
                 }
                 if (list[i].peek() > i) {
-                    //    				dead.add(i);
-                    //    				System.out.println(i);
+                    // dead.add(i);
+                    // System.out.println(i);
                     alive[i] = 0;
                     for (int j : list[i]) {
-                        //            			list[i].remove((Integer)j);
+                        // list[i].remove((Integer)j);
                         list[j].remove((Integer) i);
                     }
                     list[i].clear();
@@ -552,7 +413,7 @@ public class test{
     }
 
     static boolean helper(int i, int j, int[] index, int k, HashMap<String, String> hm) {
-        //    	System.out.println(i+","+j);
+        // System.out.println(i+","+j);
         if (k <= 0)
             return false;
         if (i == j)
@@ -561,7 +422,7 @@ public class test{
         if (hm.containsKey(key)) {
             String[] all = hm.get(key).split(",");
             int prev = Integer.parseInt(all[0]);
-            //    		String val=Integer.parseInt(all[1]);
+            // String val=Integer.parseInt(all[1]);
             if (prev == k)
                 return all[1].equals("true") ? true : false;
             else if (prev > k && all[1].equals("false"))
@@ -625,7 +486,8 @@ public class test{
     }
 
     static long iGCD(long x, long y) {
-        if (y == 0) return x;
+        if (y == 0)
+            return x;
         return iGCD(y, x % y);
     }
 
@@ -639,7 +501,7 @@ public class test{
             for (int i = 0; i < arr.length - 1; i++) {
                 if (Math.abs(arr[i] - arr[i + 1]) > 1) {
                     mex = arr[i] + 1;
-                    //                        System.out.println(mex);
+                    // System.out.println(mex);
                     flag = true;
                     break;
                 }
@@ -768,7 +630,8 @@ public class test{
                     ans += cOne;
                     zero--;
                 }
-                if (zero == 0) return ans;
+                if (zero == 0)
+                    return ans;
             }
         }
         return ans;
@@ -793,6 +656,7 @@ public class test{
         }
         System.out.println();
     }
+
     static boolean lucky(long n, int d) {
         String d1 = String.valueOf(d);
         char ch = d1.charAt(0);
@@ -804,7 +668,8 @@ public class test{
         }
         return false;
     }
-    static void twoDInput(){
+
+    static void twoDInput() {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
         scanner.nextLine(); // Move to the next line
@@ -818,31 +683,14 @@ public class test{
 
     private static class PairList {
         int a, b;
+
         public PairList(int a, int b) {
             this.a = a;
             this.b = b;
         }
+
         public String toString() {
             return "(" + a + ", " + b + ")";
-        }
-    }
-    static void sangreek(long n, long arr[],long k){
-        ArrayList<Long>ans = new ArrayList<>();
-        if(arr[1]!=1) {System.out.println(1);return;}
-        arr[((int) n) + 1] = (long) 1e18;
-        boolean flag = true;
-        long cnt = 1;
-        long d = 1;
-        for(int i=2; i<=n+1; i++){
-            while(cnt+d<arr[i]){
-                cnt+=d;
-                ans.add(cnt);
-                if(ans.size()>k){
-                    System.out.println(ans.get((int)k-1));
-                    return;
-                }
-            }
-            d = i;
         }
     }
 }
